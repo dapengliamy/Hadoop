@@ -28,4 +28,4 @@ source ∼/.cshrc
 
 You have a folder on HDFS server at /user/cs540/<your onid user name>. Note that files on HDFS can be manipulated only using the special commands that are given below. Throughout the assignment, you should just use this directory when you need to work with HDFS. You can upload files or write output of your jobs to your directory. Note that this directory is not being backed up. Following is a list of commands that you can use to interact with HDFS:
 
-*1. View list of files and folders: hdfs dfs -ls <path>
+ 1. View list of files and folders: hdfs dfs -ls <path>
