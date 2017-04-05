@@ -86,5 +86,6 @@ hdfs dfs -cat <path to your folder>/output/part-r-00000
 ```
 
 Depending on the number of reducers you may get more than one output files. Use the list command mentioned in the previous section to go through different output files.
-	  1.  You can put your code in a directory under your engineering account’s home folder. This way, after logging in to the Hadoop server, you can access your code in your engineering home folder and you can edit and compile the code there. However, the input file should be uploaded to the HDFS using the given commands.
-	  2. After running your job you can view its status using a web interface. To do this, login to Hadoop server. If you are a mac user, you need to add −X to ssh command to enable X11 services. After you logged in, type firefox in the terminal. This should open a firefox windonw. Then go to “http://hadoop-master.engr.oregonstate.edu:8088/” in the firefox. You should be able to see information on your hadoop jobs.
+
+  1. You can put your code in a directory under your engineering account’s home folder. This way, after logging in to the Hadoop server, you can access your code in your engineering home folder and you can edit and compile the code there. However, the input file should be uploaded to the HDFS using the given commands.
+  2. After running your job you can view its status using a web interface. To do this, login to Hadoop server. If you are a mac user, you need to add −X to ssh command to enable X11 services. After you logged in, type firefox in the terminal. This should open a firefox windonw. Then go to “http://hadoop-master.engr.oregonstate.edu:8088/” in the firefox. You should be able to see information on your hadoop jobs.
