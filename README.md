@@ -33,8 +33,52 @@ You have a folder on HDFS server at /user/cs540/<your onid user name>. Note that
       hdfs dfs -put <file on engr account> <path to your directory on HDFS>
  3. Download a file from HDFS:
   hdfs dfs -get <path to your directory on HDFS>/<file_name>
- 4. View file on HDFS: hdfs dfs -cat <path to your directory on HDFS>/<file_name> • Make a new directory:
-      hdfs dfs -mkdir <path your directory on HDFS>/<folder_name>
+ 4. View file on HDFS: hdfs dfs -cat <path to your directory on HDFS>/<file_name> 
+ 5.  Make a new directory:
+     hdfs dfs -mkdir <path your directory on HDFS>/<folder_name>
  5. Remove a file: hdfs dfs -rm <path to your directory on HDFS>/<file_name>
  6. Remove a directory:
      hdfs dfs -rm -r <path to your directory on HDFS>/<folder_name>
+
+## 3. Problem Explanation
+Your task is to compute the page visit counts of Wikipedia pages over a period of time. We have provided an input file input.csv that contains page titles and visit counts for each page. Each row of the file has page title, page visit count and content size information. These values are separated by space. There can be multiple rows for a single page. Following is a fragment of sample input file:
+
+
+Ace_of_Swords 2 17276
+Law_school 29 539143
+Ace_of_Swords 3 17705
+
+You should write a program that computes the total page visits for each page. For example, the total page visits for Ace of Swords will be 5. The output file should contain page title and the total count separated by a single space. Following is the output for the sample input:
+
+Law_school 29
+Ace_of_Swords 5
+
+Note that the rows of the output file do not need to be in the same order as the input file.
+
+## 4. Implementation
+
+You are given a skeleton code PageCount.java and you need to complete the map and reduce functions in this file.
+
+## 5. Mapper
+The map function is called once for each key/value pair in the input split. The value argument of map function is of type Text and contains the text of the input file. You can call toString() on it to get a String object of the value 2. You should use value to produce the needed key-value pairs. After that you can call context.write(new key, new value) to send the key values to the reducer.
+
+## 6. Reducer
+The reduce function is called once for each key received from the Mapper. You can iterate over the values of that key to do your computations. In the end of the method you can call context.write(another key, another value) to write the results of reduce to an output file.
+
+## 7. Compiling and Running
+Once you have finished your implementation you can run the following commands to compile your code and create a jar file:
+
+```
+hadoop com.sun.tools.javac.Main PageCount.java
+jar cf pc.jar PageCount*.class
+
+Then upload the input file input.csv to your HDFS folder:
+
+hdfs dfs -put input.csv <path to your folder>
+
+Next you you can run the application:
+
+hadoop jar pc.jar PageCount.java <path to your folder>/input <path to your folder>/output Note that the output directory should not exist before running the above command. Otherwise you will get an error. After the job is finished you can view the output file:
+
+hdfs dfs -cat <path to your folder>/output/part-r-00000
+```
