@@ -1,6 +1,6 @@
 In this small project,  I are going to implement a Hadoop program that computes the page visit counts of Wikipedia pages.
 
-##1.Setting Up Hadoop Environment
+## 1.Setting Up Hadoop Environment
 
 In this section, we are going to setup the Hadoop environment. First you need to login to the Hadoop server using your engineering account:
 ssh hadoop-master.engr.oregonstate.edu
@@ -24,6 +24,6 @@ setenv HADOOP_CLASSPATH "${JAVA_HOME}/lib/tools.jar"
 After this, you need to reload the startup file:
 source ∼/.cshrc
 
-##2. Working with HDFS
+## 2. Working with HDFS
 
 You have a folder on HDFS server at /user/cs540/<your onid user name>. Note that files on HDFS can be manipulated only using the special commands that are given below. Throughout the assignment, you should just use this directory when you need to work with HDFS. You can upload files or write output of your jobs to your directory. Note that this directory is not being backed up. Following is a list of commands that you can use to interact with HDFS:
