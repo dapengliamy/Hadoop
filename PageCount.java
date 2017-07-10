@@ -18,6 +18,11 @@ public class PageCount {
 
 			public void map(Object key, Text value, Context context
 				       ) throws IOException, InterruptedException {
+			    //added split on whitespace
+			    String[] words = value.toString().split(" ");
+			    //get first word
+			    context.write(new Text(words[0]), new IntWritable(Integer.parseInt(words[1])));
+			    
 			}
 	}
 
@@ -28,7 +33,12 @@ public class PageCount {
 			public void reduce(Text key, Iterable<IntWritable> values,
 					Context context
 					) throws IOException, InterruptedException {
-      }
+			    int voteCount = 0;
+			    for(IntWritable value: values){
+				voteCount+=value.get();
+			    }
+			    context.write(key, new IntWritable(voteCount));
+			}
 	}
 
 	public static void main(String[] args) throws Exception {
